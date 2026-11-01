@@ -39,8 +39,8 @@ spec:
             - name: SONGS_MS_PORT
               value: "8081"
             - name: RESOURCES_DB_URL
-              value: "127.0.0.0"
+              value: "resources-db"
             - name: RESOURCES_DB_PORT
-              value: "5433"
+              value: "5432"
           ports:
             - containerPort: 8080

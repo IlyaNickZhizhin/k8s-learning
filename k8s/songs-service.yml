@@ -37,7 +37,7 @@ spec:
             - name: SONGS_MS_URL
               value: "songs-service"
             - name: SONGS_DB_URL
-              value: "127.0.0.0"
+              value: "songs-db"
             - name: SONGS_DB_PORT
               value: "5432"
           ports:
