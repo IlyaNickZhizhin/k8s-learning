@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: songs-container
-          image: ilyazhizhin/songs-image:1.0.0
+          image: ilyazhizhin/songs-image:1.1.0
           env:
             - name: SONGS_MS_NAME
               valueFrom:
