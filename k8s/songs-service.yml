@@ -70,6 +70,24 @@ spec:
                 configMapKeyRef:
                   name: application-cm
                   key: songs_db_name
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8081
+            periodSeconds: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8081
+            periodSeconds: 20
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8081
+            periodSeconds: 3
+            failureThreshold: 3
           ports:
             - containerPort: 8081
           volumeMounts:
