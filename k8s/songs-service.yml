@@ -31,15 +31,45 @@ spec:
           image: songs-image:1.0.0
           env:
             - name: SONGS_MS_NAME
-              value: "songs-ms"
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_ms_name
             - name: SONGS_MS_PORT
-              value: "8081"
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_ms_port
             - name: SONGS_MS_URL
-              value: "songs-service"
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_ms_url
             - name: SONGS_DB_URL
-              value: "songs-db"
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_db_url
             - name: SONGS_DB_PORT
-              value: "5432"
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_db_port
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: songs_db_user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: songs_db_password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: application-cm
+                  key: songs_db_name
           ports:
             - containerPort: 8081
           volumeMounts:
